@@ -60,7 +60,7 @@
             entity = entities[i];
             id = entity.getAttribute( "id" );
 
-            ECEnt = new this.ecModel.Entity( id );
+            ECEnt =  this.ecModel.createEntity(id, 'notname');   
             this.ecModel.addEntity(ECEnt);
 
             components = entity.getElementsByTagName( "component" );
@@ -70,8 +70,9 @@
 
                 attributes = components[j].getElementsByTagName( "attribute" );
 
+                // debugger;
 
-                ECComp = new this.ecModel.Component(type);
+                ECComp = this.ecModel.createComponent(type);
 
                 for ( k = 0; k < attributes.length; k++ ) {
                     attribute = attributes[k];
@@ -79,11 +80,11 @@
                     name = attribute.getAttribute( "name" );
                     value = attribute.getAttribute( "value" );
 
-                    ECComp.addAttribute(name, value);
+                    ECComp.updateAttribute(k, value, name);
 
                 }
 
-                this.ecModel.addComponent(ECComp, id);
+                ECEnt.addComponent(ECComp, j);
 
             }
         }

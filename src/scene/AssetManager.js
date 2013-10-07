@@ -10,7 +10,7 @@
 
     var AssetManager = namespace.AssetManager = function ( framework, options ) {
         var defaults = {
-                remoteStorage: 'http://127.0.0.1:8000/',
+                remoteStorage: 'http://127.0.0.1:8000/Users/Tapani/Dropbox/Public/Playsign/GitHub/Chiru-WebClient/scenes/avatar/',
                 meshType: 'ogre'
             },
             opts = utils.extend( {}, defaults, options );

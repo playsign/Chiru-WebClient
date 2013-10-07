@@ -1,0 +1,10 @@
+var sParser = new webtundra.SceneParser(webtundra.Framework.sceneManager.ecManager);
+var foo = sParser.initParser();
+sParser.parse(foo);
+
+webtundra.Framework.sceneManager.scene
+
+
+for(var i = 0; i < webtundra.Framework.sceneManager.scene.__objects.length;i++){
+	console.log(webtundra.Framework.sceneManager.scene.__objects[i].position);
+}
