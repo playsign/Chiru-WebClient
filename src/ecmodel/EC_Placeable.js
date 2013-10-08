@@ -8,7 +8,6 @@
 (function ( namespace, undefined ) {
     var ECPlaceable, util;
 
-
     util = namespace.util;
 
 
@@ -26,7 +25,7 @@
         namespace.Component.call( this, framework ); //Inherit component properties
 
         // Default attributes
-        this.createAttribute( "transform", [0, 0, 0, 0, 0, 0, 1, 1, 1], 'transform' );
+        this.createAttribute( "Transform", [0, 0, 0, 0, 0, 0, 1, 1, 1], 'transform' );
         this.createAttribute( "showboundingbox", false, 'bool' );
         this.createAttribute( "visible", true, 'bool' );
 
@@ -66,9 +65,11 @@
 
             onAttributeUpdated: function ( attr ) {
 
-                    if ( attr['name'] === 'transform' ) {
+                    if ( attr['name'].toLowerCase() === 'transform' ) {
                         this.updateSceneNode();
+                                            // debugger;
                     }
+                    // debugger;
             },
 
             attach: function () {
@@ -120,11 +121,19 @@
             },
 
             updateSceneNode: function(){
+                // debugger;
+
                 var trans = this.transform, node = this.sceneNode;
 
                 node.position.set( trans[0], trans[1], trans[2] );
                 node.rotation.set( trans[3] * (Math.PI / 180), trans[4] * (Math.PI / 180), trans[5] * (Math.PI / 180) );
                 node.scale.set( trans[6], trans[7], trans[8] );
+
+                // console.log("trans: ");
+                // console.log(trans);
+
+                // console.log("scale: ");
+                // console.log(node.scale);
             }
 
 

@@ -43,15 +43,15 @@
         xhttp.overrideMimeType('text/xml');
 
         xhttp.open("GET", "scenes/avatar/scene.txml", false);
-        // xhttp.open("GET", "scenes/avatar/kaup_11e.txml?123", false);
+        //xhttp.open("GET", "scenes/avatar/kaup_11e.txml?123", false);
         xhttp.send(null);
         parser = xhttp.responseXML;
-        console.log(parser);
+        // console.log(parser);
         return parser;
     };
 
     SceneParser.prototype.parse = function(xml) {
-
+ // console.log("________________________________________" );
         var entities = this.parser.getElementsByTagName("entity"),
             i, j, k, entity, id, components,
             type, attributes, attribute, name, value, ECEnt, ECComp;
@@ -59,13 +59,13 @@
 
         for (i = 0; i < entities.length; i++) {
             entity = entities[i];
-            
+
             //does not work when the TXML file has overlapping IDs - the entities just won't get created and code borks
             //id = entity.getAttribute("id");
             id = i;
 
             ECEnt = this.ecModel.createEntity(id, 'notname');
-          console.log("ECEnt: "+ ECEnt);
+            // console.log("ECEnt: " + ECEnt);
             this.ecModel.addEntity(ECEnt);
 
             components = entity.getElementsByTagName("component");
@@ -85,18 +85,23 @@
                     name = attribute.getAttribute("name");
                     value = attribute.getAttribute("value");
 
-                    ECComp.updateAttribute(k, value, name);
+                    if (name.toLowerCase() === 'transform') {
+                        value = value.split(',');
+                        // console.log("name: " + name);
+                        // console.log("value: " + value);
+                    }
 
+                    ECComp.updateAttribute(k, value, name);
                 }
 
                 try {
                     // debugger;
                     ECEnt.addComponent(ECComp, j);
-                    console.log("success: "+type);
+                    // console.log("success: " + type);
                 } catch (e) {
-                    console.log("fail: "+type);
-                    console.log(e.fileName);
-                                        console.log(e.lineNumber);
+                    // console.log("fail: " + type);
+                    // console.log(e.fileName);
+                    // console.log(e.lineNumber);
 
                 }
 

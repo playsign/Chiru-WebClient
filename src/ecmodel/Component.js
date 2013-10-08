@@ -173,10 +173,10 @@
             // Defining setters and getters for attribute
             proto = Object.getPrototypeOf( this );
             if ( !proto.hasOwnProperty( setterName ) ) {
-                //console.log( "Creating attribute",name);
+                // console.log( "Creating attribute",name);
                 Object.defineProperty( proto, setterName, {
                     set: (function ( val ) {
-                        //console.log( "Setting attribute", name, "to", val );
+                        // console.log( "Setting attribute", name, "to", val );
                         var attribute, attributes = this.attributes;
                         if ( attributes.hasOwnProperty( name ) ) {
                             attribute = attributes[name];
@@ -189,7 +189,7 @@
                     get: (function () {
                         var attributes = this.attributes;
                         if ( attributes.hasOwnProperty( name ) ) {
-                            //console.log( "Attribute", name, "has value:" );
+                            // console.log( "Attribute", name, "has value:" );
                             return attributes[name]['val'];
                         }
                         return false;
@@ -206,9 +206,14 @@
         },
 
         updateAttribute: function ( id, val, name ) {
+             // console.log("updateAttribute: " +name);
+             /*if(name.toLowerCase() === 'transform') {
+                debugger;
+            }*/
+
             var map = this.attributeMap, attributes, attrName, setter;
 
-            if ( !id || !val ) {
+            if ( id === null || !val ) {
                 return;
             }
 
@@ -229,6 +234,10 @@
             }
 
             this[setter] = val;
+            // this['munkiva_attribuutti'] = "hello javascript";
+
+            // console.log("setter: ");
+            // console.log( this[setter] );
 
         },
 
