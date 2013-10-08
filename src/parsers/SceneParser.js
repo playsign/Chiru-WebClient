@@ -42,8 +42,11 @@
         // Temporarilly loading static xml
         xhttp.overrideMimeType('text/xml');
 
-        xhttp.open("GET", "scenes/avatar/scene.txml", false);
-        //xhttp.open("GET", "scenes/avatar/kaup_11e.txml?123", false);
+        // xhttp.open("GET", "scenes/avatar/scene.txml", false);
+        // xhttp.open("GET", "scenes/avatar/kaup_11e.txml?123", false);
+                // xhttp.open("GET", "scenes/avatar/RttDemoWorld.txml?123", false);
+   xhttp.open("GET", "scenes/avatar/kaup_11part.txml?123", false);
+
         xhttp.send(null);
         parser = xhttp.responseXML;
         // console.log(parser);

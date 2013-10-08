@@ -46,7 +46,7 @@
 
     namespace.startClient = function(){
         namespace.Framework.start();
-    };
+    };      
 
 
     /**

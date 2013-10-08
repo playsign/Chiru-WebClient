@@ -183,7 +183,7 @@
                                 mesh.geometry.buffersNeedUpdate = true;
                                 mesh.geometry.uvsNeedUpdate = true;
 
-                                //mesh.material.side = THREE.BackSide;
+                                mesh.material.side = THREE.BackSide;
 
                                 mesh.material.needsUpdate = true;
                             } );
